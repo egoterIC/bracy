@@ -27,14 +27,25 @@ class CharsValidator implements CharsValidatorInterface
      * @param Bracy $bracy
      *
      * @return bool
+     *
+     * @throws \InvalidArgumentException
      */
     public function isValid(Bracy $bracy): bool
     {
+        $openingBrace = $bracy->getOpeningBrace();
+        $closingBrace = $bracy->getClosingBrace();
+
+        if ($openingBrace == $closingBrace) {
+            throw new \InvalidArgumentException(
+                'Opening and closing brackets must not be equal.'
+            );
+        }
+
         $allowedCharsPattern = sprintf(
             "/[^%s%s%s]/",
             $this->allowedChars,
-            $bracy->getOpeningBrace(),
-            $bracy->getClosingBrace()
+            $openingBrace,
+            $closingBrace
         );
 
         return !preg_match($allowedCharsPattern, $bracy->getInputString());
