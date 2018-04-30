@@ -28,6 +28,7 @@ class BalancedValidator implements BracketValidatorInterface
      * @return bool
      *
      * @throws EmptyContentException
+     * @throws \InvalidArgumentException
      */
     public function isValid(Bracy $bracy): bool
     {
@@ -48,21 +49,24 @@ class BalancedValidator implements BracketValidatorInterface
         $openingBrace = $bracy->getOpeningBrace();
         $closingBrace = $bracy->getClosingBrace();
 
+        $purelyBracedArray = array_intersect(
+            $inputCharArray,
+            [$openingBrace, $closingBrace]
+        ); // array consisting purely of brackets
+
         $balancedStack = new \SplStack();
 
-        foreach ($inputCharArray as $char) {
-            switch ($char) {
-                // in case of opening bracket push it to the stack
-                case $openingBrace:
-                    $balancedStack->push($char);
-                    break;
-                case $closingBrace:
-                    if ($balancedStack->isEmpty()) {
-                        return false;
-                    }
-                    $balancedStack->pop();
-                    break;
+        foreach ($purelyBracedArray as $char) {
+            if ($char == $openingBrace) {
+                $balancedStack->push($char);
+                continue;
             }
+
+            if ($balancedStack->isEmpty()) {
+                return false;
+            }
+
+            $balancedStack->pop();
         }
 
         return $balancedStack->isEmpty();

@@ -6,7 +6,7 @@ use Bracy\DTO\Bracy;
 use Bracy\Validators\BalancedValidator;
 use Bracy\Validators\CharsValidator;
 
-$bracy = new Bracy('()(())');
+$bracy = new Bracy('(((())))()');
 
 $charsValidator = new CharsValidator();
 $balancedValidator = new BalancedValidator($charsValidator);
