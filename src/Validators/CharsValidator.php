@@ -39,15 +39,4 @@ class CharsValidator implements CharsValidatorInterface
 
         return !preg_match($allowedCharsPattern, $bracy->getInputString());
     }
-
-    /**
-     * @param string $allowedChars
-     *
-     * @return CharsValidator
-     */
-    public function setAllowedChars(string $allowedChars): CharsValidator
-    {
-        $this->allowedChars = $allowedChars;
-        return $this;
-    }
 }
