@@ -1,0 +1,19 @@
+{
+  "name": "egoterIC/bracy",
+  "description": "Library for easy balanced bracket validation.",
+  "version": "1.0.0",
+  "type": "project",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Mike Stolnikov",
+      "email": "smartkipper@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Bracy\\": "src"
+    }
+  }
+}
