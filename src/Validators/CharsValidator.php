@@ -34,7 +34,8 @@ class CharsValidator implements CharsValidatorInterface
             "/[^%s%s%s]/",
             $this->allowedChars,
             $bracy->getOpeningBrace(),
-            $bracy->getClosingBrace());
+            $bracy->getClosingBrace()
+        );
 
         return !preg_match($allowedCharsPattern, $bracy->getInputString());
     }
