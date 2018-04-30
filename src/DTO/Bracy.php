@@ -36,8 +36,7 @@ class Bracy
         string $userInput,
         string $openingChar = "(",
         string $closingChar = ")"
-    )
-    {
+    ) {
         $this->inputString = $userInput;
         $this->openingBrace = $openingChar;
         $this->closingBrace = $closingChar;

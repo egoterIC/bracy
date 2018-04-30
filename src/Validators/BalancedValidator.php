@@ -32,12 +32,16 @@ class BalancedValidator implements BracketValidatorInterface
      */
     public function isValid(Bracy $bracy): bool
     {
-        if (empty($inputString = $bracy->getInputString())) {
+        $inputString = $bracy->getInputString();
+
+        // checks if the string is empty
+        if (empty($inputString)) {
             throw new EmptyContentException(
                 'Provided string is empty.'
             );
         }
 
+        // validates if a string contains illegal characters
         if (!($this->charsValidator->isValid($bracy))) {
             throw new \InvalidArgumentException(
                 'Provided string contains invalid characters.'
@@ -49,6 +53,25 @@ class BalancedValidator implements BracketValidatorInterface
         $openingBrace = $bracy->getOpeningBrace();
         $closingBrace = $bracy->getClosingBrace();
 
+        return $this->isArrayBalanced(
+            $inputCharArray,
+            $openingBrace,
+            $closingBrace
+        );
+    }
+
+    /**
+     * Takes an array consisting only of brackets
+     * and verifies if they are balanced
+     *
+     * @param $inputCharArray
+     * @param $openingBrace
+     * @param $closingBrace
+     *
+     * @return bool
+     */
+    private function isArrayBalanced($inputCharArray, $openingBrace, $closingBrace): bool
+    {
         $purelyBracedArray = array_intersect(
             $inputCharArray,
             [$openingBrace, $closingBrace]
