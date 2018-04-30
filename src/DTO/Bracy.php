@@ -28,7 +28,9 @@ class Bracy
     /**
      * Bracy constructor.
      *
-     * @param $userInput
+     * @param string $userInput
+     * @param string $openingChar
+     * @param string $closingChar
      */
     public function __construct(
         string $userInput,

@@ -40,7 +40,7 @@ class CharsValidator implements CharsValidatorInterface
     }
 
     /**
-     * @param string $allowedCharsPattern
+     * @param string $allowedChars
      *
      * @return CharsValidator
      */

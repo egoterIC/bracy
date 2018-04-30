@@ -15,7 +15,7 @@ class BalancedValidator implements BracketValidatorInterface
     /**
      * BalancedValidator constructor.
      *
-     * @param $allowedCharsValidator
+     * @param CharsValidatorInterface $charsValidator
      */
     public function __construct(CharsValidatorInterface $charsValidator)
     {
