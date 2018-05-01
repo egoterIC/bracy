@@ -49,11 +49,9 @@ class CharsValidator implements CharsValidatorInterface
             );
         }
 
-        $allowedCharsArray = [
-            $this->allowedChars,
-            $openingChar,
-            $closingChar
-        ];
+        $allowedCharsArray = str_split($this->allowedChars);
+        $allowedCharsArray[] = $openingChar;
+        $allowedCharsArray[] = $closingChar;
 
         return count(
                 array_diff(
