@@ -24,6 +24,14 @@ class CharsValidator implements CharsValidatorInterface
     }
 
     /**
+     * @return string
+     */
+    public function getAllowedChars(): string
+    {
+        return $this->allowedChars;
+    }
+
+    /**
      * @param Bracy $bracy
      *
      * @return bool
