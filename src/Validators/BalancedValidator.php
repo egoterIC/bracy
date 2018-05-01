@@ -50,13 +50,13 @@ class BalancedValidator implements BracketValidatorInterface
 
         $inputCharArray = str_split($inputString);
 
-        $openingBrace = $bracy->getOpeningBrace();
-        $closingBrace = $bracy->getClosingBrace();
+        $openingBrace = $bracy->getOpeningChar();
+        $closingBrace = $bracy->getClosingChar();
 
         return $this->isArrayBalanced(
-            $inputCharArray,
             $openingBrace,
-            $closingBrace
+            $closingBrace,
+            $inputCharArray
         );
     }
 
@@ -64,13 +64,17 @@ class BalancedValidator implements BracketValidatorInterface
      * Takes an array consisting only of brackets
      * and verifies if they are balanced
      *
-     * @param $inputCharArray
      * @param $openingBrace
      * @param $closingBrace
+     * @param $inputCharArray
      *
      * @return bool
      */
-    private function isArrayBalanced($inputCharArray, $openingBrace, $closingBrace): bool
+    private function isArrayBalanced(
+        string $openingBrace,
+        string $closingBrace,
+        array $inputCharArray
+    ): bool
     {
         $purelyBracedArray = array_intersect(
             $inputCharArray,

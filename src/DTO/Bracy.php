@@ -12,18 +12,18 @@ class Bracy
     private $inputString;
 
     /**
-     * Opening brace
+     * Opening char
      *
      * @var string
      */
-    private $openingBrace;
+    private $openingChar;
 
     /**
-     * Closing brace
+     * Closing char
      *
      * @var string
      */
-    private $closingBrace;
+    private $closingChar;
 
     /**
      * Bracy constructor.
@@ -38,8 +38,8 @@ class Bracy
         string $closingChar = ")"
     ) {
         $this->inputString = $userInput;
-        $this->openingBrace = $openingChar;
-        $this->closingBrace = $closingChar;
+        $this->openingChar = $openingChar;
+        $this->closingChar = $closingChar;
     }
 
     /**
@@ -53,16 +53,16 @@ class Bracy
     /**
      * @return string
      */
-    public function getOpeningBrace(): string
+    public function getOpeningChar(): string
     {
-        return $this->openingBrace;
+        return $this->openingChar;
     }
 
     /**
      * @return string
      */
-    public function getClosingBrace(): string
+    public function getClosingChar(): string
     {
-        return $this->closingBrace;
+        return $this->closingChar;
     }
 }
