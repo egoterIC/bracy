@@ -23,6 +23,9 @@ class BalancedValidator implements BracketValidatorInterface
     }
 
     /**
+     * Validates Bracy data object
+     * for balanced brackets
+     *
      * @param Bracy $bracy
      *
      * @return bool
@@ -61,7 +64,7 @@ class BalancedValidator implements BracketValidatorInterface
     }
 
     /**
-     * Takes an array consisting only of brackets
+     * Takes an array consisting exclusively of brackets
      * and verifies if they are balanced
      *
      * @param $openingBrace
@@ -84,6 +87,7 @@ class BalancedValidator implements BracketValidatorInterface
         $balancedStack = new \SplStack();
 
         foreach ($purelyBracedArray as $char) {
+            /* @var string $char */
             if ($char == $openingBrace) {
                 $balancedStack->push($char);
                 continue;

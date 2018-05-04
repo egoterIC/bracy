@@ -14,7 +14,7 @@ class CharsValidator implements CharsValidatorInterface
     private $allowedChars;
 
     /**
-     * CharsValidator constructor.
+     * CharsValidator constructor
      *
      * @param string $allowedChars
      */
@@ -32,6 +32,9 @@ class CharsValidator implements CharsValidatorInterface
     }
 
     /**
+     * Checks Bracy data object for
+     * validity of user-provided fields
+     *
      * @param Bracy $bracy
      *
      * @return bool
