@@ -11,7 +11,9 @@ Bracy is a verifier for balanced brackets in a user provided string.
 # Installation
 This package is installable and autoloadable via Composer as stolnikov/bracy.
 
+```shell
     composer require stolnikov/bracy
+```
 
 # Usage
 ```php
@@ -21,12 +23,14 @@ This package is installable and autoloadable via Composer as stolnikov/bracy.
     use Bracy\Validators\CharsValidator;
 
     $string = '((()))()(()))';
+    
     try {
         $bracy = new Bracy($string);
         $balancedValidator = new BalancedValidator(new CharsValidator());
         $isBalanced = $balancedValidator->isValid($bracy);
     } catch (EmptyContentException | \InvalidArgumentException | \Throwable $e) {
         $errorMessage = sprintf("%s" . PHP_EOL, $e->getMessage());
+        $isBalanced = null;
     }
     
     if ($isValid !== null) {
@@ -35,8 +39,8 @@ This package is installable and autoloadable via Composer as stolnikov/bracy.
             $isValid ? 'balanced' : 'unbalanced'
         );
     } else {
-       $result= $errorMessage;
+       $result = $errorMessage;
     }
     
-    echo $result;
+    echo $result; // Check complete. Brackets are unbalanced.
 ```
