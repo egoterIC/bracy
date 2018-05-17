@@ -4,10 +4,16 @@ namespace Bracy\Validators;
 
 use Bracy\DTO\Bracy;
 
+/**
+ * Encapsulation Bracy DTO fields validator
+ *
+ * Acts as a precondition for the matching brackets check.
+ */
 class CharsValidator implements CharsValidatorInterface
 {
     /**
-     * Pattern of allowed characters for regex validation
+     * Sequence of allowed characters for
+     * allowed characters validation
      *
      * @var string
      */
@@ -24,6 +30,8 @@ class CharsValidator implements CharsValidatorInterface
     }
 
     /**
+     * Return valid characters sequence
+     *
      * @return string
      */
     public function getAllowedChars(): string
@@ -32,12 +40,7 @@ class CharsValidator implements CharsValidatorInterface
     }
 
     /**
-     * Checks Bracy data object for
-     * validity of user-provided fields
-     *
-     * @param Bracy $bracy
-     *
-     * @return bool
+     * {@inheritDoc}
      *
      * @throws \InvalidArgumentException
      */
@@ -58,11 +61,9 @@ class CharsValidator implements CharsValidatorInterface
         $allowedCharsArray[] = $openingChar;
         $allowedCharsArray[] = $closingChar;
 
-        return count(
-                array_diff(
-                    str_split($bracy->getInputString()),
-                    $allowedCharsArray
-                )
-            ) === 0;
+        $inputStringArray = str_split($bracy->getInputString());
+        $differenceArray = array_diff($inputStringArray, $allowedCharsArray);
+
+        return empty($differenceArray);
     }
 }

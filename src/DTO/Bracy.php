@@ -2,10 +2,15 @@
 
 namespace Bracy\DTO;
 
+/**
+ * Immutable value object representing a storage for
+ * user-provided string as well as valid opening and
+ * closing characters
+ */
 class Bracy
 {
     /**
-     * Input string provided by user
+     * Input expression provided by user
      *
      * @var string
      */
@@ -26,7 +31,7 @@ class Bracy
     private $closingChar;
 
     /**
-     * Bracy constructor.
+     * Bracy constructor
      *
      * @param string $userInput
      * @param string $openingChar
@@ -43,6 +48,8 @@ class Bracy
     }
 
     /**
+     * Return user-defined string.
+     *
      * @return string
      */
     public function getInputString(): string
@@ -51,6 +58,8 @@ class Bracy
     }
 
     /**
+     * Return a character denoting opening char.
+     *
      * @return string
      */
     public function getOpeningChar(): string
@@ -59,6 +68,8 @@ class Bracy
     }
 
     /**
+     * Return a character denoting closing char.
+     *
      * @return string
      */
     public function getClosingChar(): string

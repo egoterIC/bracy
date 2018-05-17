@@ -5,15 +5,20 @@ namespace Bracy\Validators;
 use Bracy\DTO\Bracy;
 use Bracy\Exceptions\EmptyContentException;
 
+/**
+ * Balanced validator encapsulation
+ */
 class BalancedValidator implements BracketValidatorInterface
 {
     /**
-     * @var CharsValidator
+     * Validator to check a string for illegal characters
+     *
+     * @var CharsValidatorInterface $charsValidator
      */
     private $charsValidator;
 
     /**
-     * BalancedValidator constructor.
+     * BalancedValidator constructor
      *
      * @param CharsValidatorInterface $charsValidator
      */
@@ -23,12 +28,7 @@ class BalancedValidator implements BracketValidatorInterface
     }
 
     /**
-     * Validates Bracy data object
-     * for balanced brackets
-     *
-     * @param Bracy $bracy
-     *
-     * @return bool
+     * {@inheritDoc}
      *
      * @throws EmptyContentException
      * @throws \InvalidArgumentException
@@ -44,7 +44,7 @@ class BalancedValidator implements BracketValidatorInterface
             );
         }
 
-        // validates if a string contains illegal characters
+        // validates if the string contains illegal characters
         if (!($this->charsValidator->isValid($bracy))) {
             throw new \InvalidArgumentException(
                 'Provided string contains invalid characters.'
@@ -64,8 +64,8 @@ class BalancedValidator implements BracketValidatorInterface
     }
 
     /**
-     * Takes an array consisting exclusively of brackets
-     * and verifies if they are balanced
+     * Verify an array consisting exclusively
+     * of brackets if they are balanced.
      *
      * @param $openingBrace
      * @param $closingBrace
@@ -77,12 +77,11 @@ class BalancedValidator implements BracketValidatorInterface
         string $openingBrace,
         string $closingBrace,
         array $inputCharArray
-    ): bool
-    {
+    ): bool {
         $purelyBracedArray = array_intersect(
             $inputCharArray,
             [$openingBrace, $closingBrace]
-        ); // array consisting purely of brackets
+        );
 
         $balancedStack = new \SplStack();
 
