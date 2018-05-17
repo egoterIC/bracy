@@ -39,8 +39,8 @@ class Bracy
      */
     public function __construct(
         string $userInput,
-        string $openingChar = "(",
-        string $closingChar = ")"
+        string $openingChar = '(',
+        string $closingChar = ')'
     ) {
         $this->inputString = $userInput;
         $this->openingChar = $openingChar;
