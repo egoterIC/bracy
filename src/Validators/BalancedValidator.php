@@ -78,27 +78,28 @@ class BalancedValidator implements BracketValidatorInterface
         string $closingBrace,
         array $inputCharArray
     ): bool {
-        $purelyBracedArray = array_intersect(
+        $bracedArray = array_intersect(
             $inputCharArray,
             [$openingBrace, $closingBrace]
         );
 
-        $balancedStack = new \SplStack();
+        $stack = new \SplStack();
 
-        foreach ($purelyBracedArray as $char) {
+        foreach ($bracedArray as $char) {
             /* @var string $char */
             if ($char == $openingBrace) {
-                $balancedStack->push($char);
+                $stack[] = $char;
                 continue;
             }
 
-            if ($balancedStack->isEmpty()) {
-                return false;
+            $isEmpty = $stack->count();
+            if ($isEmpty) {
+                break;
             }
 
-            $balancedStack->pop();
+            $stack->pop();
         }
 
-        return $balancedStack->isEmpty();
+        return $isEmpty;
     }
 }
