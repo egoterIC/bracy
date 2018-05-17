@@ -84,6 +84,7 @@ class BalancedValidator implements BracketValidatorInterface
         );
 
         $stack = new \SplStack();
+        $isEmpty = false;
 
         foreach ($bracedArray as $char) {
             /* @var string $char */
@@ -92,7 +93,7 @@ class BalancedValidator implements BracketValidatorInterface
                 continue;
             }
 
-            $isEmpty = $stack->count();
+            $isEmpty = (bool)$stack->count();
             if ($isEmpty) {
                 break;
             }
@@ -100,6 +101,6 @@ class BalancedValidator implements BracketValidatorInterface
             $stack->pop();
         }
 
-        return $isEmpty;
+        return (bool)$isEmpty;
     }
 }
