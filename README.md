@@ -40,7 +40,7 @@ This package is installable and autoloadable via Composer as stolnikov/bracy.
         $isBalanced = null;
     }
     
-    if ($isValid !== null) {
+    if ($isBalanced !== null) {
         $result = sprintf(
             "Check complete. Brackets are %s." . PHP_EOL,
             $isBalanced ? 'balanced' : 'unbalanced'
