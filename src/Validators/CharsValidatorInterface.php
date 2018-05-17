@@ -7,14 +7,12 @@ use Bracy\DTO\Bracy;
 /**
  * Representation of fields validator of Bracy DTO
  */
-interface CharsValidatorInterface
+interface CharsValidatorInterface extends BracyValidatorInterface
 {
     /**
-     * Checks Bracy data object for validity fields
+     * Checks Bracy data object for validity of fields
      *
-     * @param Bracy $bracy
-     *
-     * @return bool
+     * {@inheritDoc}
      */
     public function isValid(Bracy $bracy): bool;
 }
