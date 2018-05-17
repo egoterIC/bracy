@@ -23,10 +23,17 @@ This package is installable and autoloadable via Composer as stolnikov/bracy.
     use Bracy\Validators\CharsValidator;
 
     $string = '((()))()(()))';
+    $isBalanced = null;
     
     try {
+        // To account for brackets other than () use optional Bracy contructor arguments
+        // like so: new Bracy($string, '{', '}');
         $bracy = new Bracy($string);
+        
+        // You can pass allowed string characters into the constructor of CharsValidator 
+        // Default values are: " \n\t\r"
         $balancedValidator = new BalancedValidator(new CharsValidator());
+        
         $isBalanced = $balancedValidator->isValid($bracy);
     } catch (EmptyContentException | \InvalidArgumentException | \Throwable $e) {
         $errorMessage = sprintf("%s" . PHP_EOL, $e->getMessage());
@@ -36,7 +43,7 @@ This package is installable and autoloadable via Composer as stolnikov/bracy.
     if ($isValid !== null) {
         $result = sprintf(
             "Check complete. Brackets are %s." . PHP_EOL,
-            $isValid ? 'balanced' : 'unbalanced'
+            $isBalanced ? 'balanced' : 'unbalanced'
         );
     } else {
        $result = $errorMessage;
