@@ -35,9 +35,12 @@ This package is installable and autoloadable via Composer as stolnikov/bracy.
         $balancedValidator = new BalancedValidator(new CharsValidator());
         
         $isBalanced = $balancedValidator->isValid($bracy);
-    } catch (EmptyContentException | \InvalidArgumentException | \Throwable $e) {
+    } catch (EmptyContentException | \InvalidArgumentException $e) {
         $errorMessage = sprintf("%s" . PHP_EOL, $e->getMessage());
         $isBalanced = null;
+    } catch (\Throwable $e) {
+        echo sprintf("Halting execution. Reason: %s" . PHP_EOL, $e->getMessage());
+        exit;
     }
     
     if ($isBalanced !== null) {
