@@ -37,14 +37,14 @@ class BalancedValidator implements BracketValidatorInterface
     {
         $inputString = $bracy->getInputString();
 
-        // checks if the string is empty
+        // Check if the string is empty.
         if (empty($inputString)) {
             throw new EmptyContentException(
                 'Provided string is empty.'
             );
         }
 
-        // validates if the string contains illegal characters
+        // Validate if the string contains illegal characters.
         if (!($this->charsValidator->isValid($bracy))) {
             throw new \InvalidArgumentException(
                 'Provided string contains invalid characters.'

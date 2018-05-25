@@ -1,7 +1,7 @@
 {
   "name": "stolnikov/bracy",
   "description": "Library for easy balanced bracket validation.",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "type": "project",
   "license": "MIT",
   "authors": [
@@ -13,9 +13,6 @@
   ],
   "require": {
     "php": "^7.1"
-  },
-  "require-dev": {
-    "phpmd/phpmd": "@stable"
   },
   "autoload": {
     "psr-4": {
