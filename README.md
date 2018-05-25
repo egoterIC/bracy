@@ -22,21 +22,21 @@ This package is installable and autoloadable via Composer as stolnikov/bracy.
     use Bracy\Validators\CharsValidator;    
 
     try {
-    $string = '((()))()(()))';
+        $string = '((()))()(()))';
     
-    // To account for brackets other than () use optional Bracy contructor arguments
-    // like so: new Bracy($string, '{', '}');
-    $bracy = new Bracy($string);
+        // To account for brackets other than () use optional Bracy contructor arguments
+        // like so: new Bracy($string, '{', '}');
+        $bracy = new Bracy($string);
 
-    // You can pass allowed string characters into the constructor of CharsValidator
-    // Default values are: " \n\t\r"
-    $validator = new BalancedValidator(new CharsValidator());
+        // You can pass allowed string characters into the constructor of CharsValidator
+        // Default values are: " \n\t\r"
+        $validator = new BalancedValidator(new CharsValidator());
 
-    $isBalanced = $validator->isValid($bracy);
-    $result = sprintf(
-        "Check complete. Brackets are %sbalanced." . PHP_EOL,
-        $validator->isValid($bracy) ? '' : 'un'
-    );
+        $isBalanced = $validator->isValid($bracy);
+        $result = sprintf(
+            "Check complete. Brackets are %sbalanced." . PHP_EOL,
+            $validator->isValid($bracy) ? '' : 'un'
+        );
     } catch (EmptyContentException | \InvalidArgumentException $e) {
         $result = sprintf("%s" . PHP_EOL, $e->getMessage());
     } catch (\Throwable $e) {
